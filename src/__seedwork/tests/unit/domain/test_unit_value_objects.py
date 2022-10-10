@@ -38,6 +38,11 @@ class TestValueObjectUnit(unittest.TestCase):
     vo2 = StubTwoProp(prop1='value1', prop2='value2')
     self.assertEqual('{"prop1": "value1", "prop2": "value2"}', str(vo2))
 
+  def test_is_immutable(self):
+    with self.assertRaises(FrozenInstanceError):
+      value_object = StubOneProp(prop='value')
+      value_object.prop = 'fake'
+
 class TestUniqueEntityId(unittest.TestCase):
   def test_if_is_a_dataclass(self):
     self.assertTrue(is_dataclass(UniqueEntityId))
@@ -79,9 +84,4 @@ class TestUniqueEntityId(unittest.TestCase):
       value_object = UniqueEntityId()
       uuid.UUID(value_object.id)
       mock_validate.assert_called_once()
-      
-  def test_is_immutable(self):
-    with self.assertRaises(FrozenInstanceError):
-      value_object = UniqueEntityId()
-      value_object.id = 'fake id'
     
