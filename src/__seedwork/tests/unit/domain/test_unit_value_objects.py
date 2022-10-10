@@ -52,4 +52,7 @@ class TestUniqueEntityId(unittest.TestCase):
     with self.assertRaises(FrozenInstanceError):
       value_object = UniqueEntityId()
       value_object.id = 'fake id'
-    
+      
+  def test_convert_to_str(self):
+    value_object = UniqueEntityId()
+    self.assertEqual(value_object.id, str(value_object))
