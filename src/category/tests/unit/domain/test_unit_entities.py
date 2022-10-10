@@ -1,6 +1,5 @@
 from dataclasses import is_dataclass
 from datetime import datetime
-from unicodedata import category
 import unittest
 from category.domain.entities import Category
 
@@ -16,7 +15,7 @@ class TestCategoryUnit(unittest.TestCase):
     self.assertIsInstance(category.created_at, datetime)
     
     created_at: datetime = datetime.now()
-    category= Category(
+    category = Category(
       name='Movie', 
       description='some description', 
       is_active=True, 
