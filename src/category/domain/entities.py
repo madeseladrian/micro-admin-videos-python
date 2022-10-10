@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
-import uuid
+
 from src.__seedwork.domain.entities import Entity
 
 @dataclass(kw_only=True, frozen=True)
