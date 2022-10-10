@@ -4,7 +4,11 @@ from unittest.mock import patch
 import uuid
 
 from src.__seedwork.domain.exceptions import InvalidUuidException
-from src.__seedwork.domain.value_objects import UniqueEntityId
+from src.__seedwork.domain.value_objects import UniqueEntityId, ValueObject
+
+class TestValueObjectUnit(unittest.TestCase):
+  def test_if_is_a_dataclass(self):
+    self.assertTrue(is_dataclass(ValueObject))
 
 class TestUniqueEntityId(unittest.TestCase):
   def test_if_is_a_dataclass(self):
