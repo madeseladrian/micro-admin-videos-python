@@ -1,3 +1,4 @@
+from abc import ABC
 from dataclasses import FrozenInstanceError, is_dataclass
 import unittest
 from unittest.mock import patch
@@ -9,6 +10,9 @@ from src.__seedwork.domain.value_objects import UniqueEntityId, ValueObject
 class TestValueObjectUnit(unittest.TestCase):
   def test_if_is_a_dataclass(self):
     self.assertTrue(is_dataclass(ValueObject))
+  
+  def test_if_is_an_abstract_class(self):
+    self.assertIsInstance(ValueObject(), ABC)
 
 class TestUniqueEntityId(unittest.TestCase):
   def test_if_is_a_dataclass(self):
