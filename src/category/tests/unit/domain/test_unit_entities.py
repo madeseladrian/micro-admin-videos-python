@@ -1,7 +1,9 @@
 from dataclasses import is_dataclass
 from datetime import datetime
+import time
 import unittest
-from category.domain.entities import Category
+
+from src.category.domain.entities import Category
 
 class TestCategoryUnit(unittest.TestCase):
   def test_if_is_a_dataclass(self):
@@ -28,6 +30,7 @@ class TestCategoryUnit(unittest.TestCase):
     
   def test_if_created_at_is_generated_in_constructor(self):
     category1 = Category(name='Movie 1')
+    time.sleep(0.1)
     category2 = Category(name='Movie 2')
     
     self.assertNotEqual(

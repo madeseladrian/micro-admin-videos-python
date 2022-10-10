@@ -10,7 +10,7 @@ class UniqueEntityId:
   )
   
   def __post_init__(self):
-    self.id = str(self.id) if isinstance(self.id, uuid.uuid.UUID) else self.id
+    self.id = str(self.id) if isinstance(self.id, uuid.UUID) else self.id
     self.__validate()
   
   def __validate(self):
