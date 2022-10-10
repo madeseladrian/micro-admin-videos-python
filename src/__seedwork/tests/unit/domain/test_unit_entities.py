@@ -33,3 +33,17 @@ class TestEntityUnit(unittest.TestCase):
     )
     
     self.assertEqual(entity.id, '1eb554a5-90a5-4ff4-9d05-1276fa436489')
+    
+  def test_to_dict_method(self):
+    entity = StubEntity(
+      unique_entity_id=UniqueEntityId('1eb554a5-90a5-4ff4-9d05-1276fa436489'),
+      prop1='value1',
+      prop2='value2'
+    )
+    
+    self.assertDictEqual(entity.to_dict(), {
+      'id': '1eb554a5-90a5-4ff4-9d05-1276fa436489',
+      'prop1': 'value1', 
+      'prop2': 'value2' 
+    })
+    
