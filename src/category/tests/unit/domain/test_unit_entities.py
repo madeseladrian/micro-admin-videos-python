@@ -2,6 +2,7 @@ from dataclasses import FrozenInstanceError, is_dataclass
 from datetime import datetime
 import time
 import unittest
+from unittest.mock import patch
 
 from src.category.domain.entities import Category
 
@@ -42,3 +43,19 @@ class TestCategoryUnit(unittest.TestCase):
     with self.assertRaises(FrozenInstanceError):
       value_object = Category(name='test')
       value_object.name = 'fake name'
+  
+  def test_update(self):
+    category = Category(name='Movie')
+    category.update('Documentary', 'some description')
+    self.assertEqual(category.name, 'Documentary')
+    self.assertEqual(category.description, 'some description')
+
+  def test_activate(self):
+    category = Category(name='Movie', is_active=False)
+    category.activate()
+    self.assertTrue(category.is_active)
+
+  def test_deactivate(self):
+    category = Category(name='Movie')
+    category.deactivate()
+    self.assertFalse(category.is_active)
